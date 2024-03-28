@@ -1,7 +1,6 @@
 package com.zsgs.chandru.librarymanagement.datahandling;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 
 import java.io.*;
 import java.lang.reflect.Type;

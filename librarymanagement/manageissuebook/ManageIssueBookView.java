@@ -3,11 +3,7 @@ package com.zsgs.chandru.librarymanagement.manageissuebook;
 import com.zsgs.chandru.librarymanagement.admincontrols.AdminControlView;
 import com.zsgs.chandru.librarymanagement.colortext.Color;
 import com.zsgs.chandru.librarymanagement.exceptionmesage.ExceptionHandling;
-import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
-import com.zsgs.chandru.librarymanagement.managebook.ManageBookModel;
 import com.zsgs.chandru.librarymanagement.model.IssueBook;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -190,7 +186,7 @@ public class ManageIssueBookView {
         );
         for (int userId : issuedBookDetails.keySet()) {
             ArrayList<IssueBook> records = issuedBookDetails.get(userId);
-            System.out.println(userId + "\t\t| " + records.get(0).getUser().getUserName() + "\t\t| " + records.size() + "\t\t| " + records.get(0).getUser().getUserPhoneNo() + "\t\t| " + records.get(0).getUser().getUserEmailId() + "\t\t| " + records.get(0).getUser().getUserAddress());
+            System.out.println(userId + "\t\t| " + records.getFirst().getUser().getUserName() + "\t\t| " + records.size() + "\t\t| " + records.getFirst().getUser().getUserPhoneNo() + "\t\t| " + records.getFirst().getUser().getUserEmailId() + "\t\t| " + records.getFirst().getUser().getUserAddress());
         }
         System.out.println(
                 "\n-----------------------------------------------------------------------------------------------------"

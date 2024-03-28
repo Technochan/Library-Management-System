@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 
 public class ManageIssueBookModel {
-    private final ManageIssueBookView manageIssueBookView;
+    private ManageIssueBookView manageIssueBookView;
 
     public ManageIssueBookModel(ManageIssueBookView manageIssueBookView) {
         LibraryDatabase.getInstance().deserializeUserIdUserDetails();

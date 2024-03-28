@@ -8,8 +8,8 @@ import com.zsgs.chandru.librarymanagement.validation.InputValidation;
 
 public class LoginModel {
 
-    private final LoginView loginView;
-    private final SetupCredential setupCredential;
+    private LoginView loginView;
+    private SetupCredential setupCredential;
 
     LoginModel(LoginView loginView) {
         this.loginView = loginView;

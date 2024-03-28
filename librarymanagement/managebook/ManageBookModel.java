@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-class ManageBookModel {
+public class ManageBookModel {
 
-    private final ManageBookView manageBookView;
+    private ManageBookView manageBookView;
 
     public ManageBookModel(ManageBookView manageBookView) {
         this.manageBookView = manageBookView;

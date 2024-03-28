@@ -10,10 +10,10 @@ import com.zsgs.chandru.librarymanagement.manageuser.ManageUserView;
 
 
 public class AdminControlView {
-    private final ManageBookView manageBookView;
-    private final ManageUserView manageUserView;
-    private final ManageIssueBookView manageIssueBookView;
-    private final int librarianId;
+    private ManageBookView manageBookView;
+    private ManageUserView manageUserView;
+    private ManageIssueBookView manageIssueBookView;
+    private int librarianId;
     public ManageBookView getManageBookViewInstance() {
         return manageBookView;
     }

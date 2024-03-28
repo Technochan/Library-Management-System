@@ -1,8 +1,5 @@
 package com.zsgs.chandru.librarymanagement.model;
 
-
-import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
-
 public class User {
 
     private int userId;

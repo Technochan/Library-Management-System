@@ -1,7 +1,4 @@
 package com.zsgs.chandru.librarymanagement.model;
-
-import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
-
 public class Book {
 
     private int bookId;

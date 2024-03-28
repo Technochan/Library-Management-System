@@ -3,8 +3,6 @@ package com.zsgs.chandru.librarymanagement.managebook;
 import com.zsgs.chandru.librarymanagement.admincontrols.AdminControlView;
 import com.zsgs.chandru.librarymanagement.colortext.Color;
 import com.zsgs.chandru.librarymanagement.exceptionmesage.ExceptionHandling;
-
-import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
 import com.zsgs.chandru.librarymanagement.model.Book;
 
 import java.util.ArrayList;

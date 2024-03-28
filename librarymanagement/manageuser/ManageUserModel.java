@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ManageUserModel {
-    private final ManageUserView manageUserView;
+    private ManageUserView manageUserView;
 
     public ManageUserModel(ManageUserView manageUserView) {
         this.manageUserView = manageUserView;

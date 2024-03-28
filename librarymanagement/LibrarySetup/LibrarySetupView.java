@@ -1,13 +1,10 @@
 package com.zsgs.chandru.librarymanagement.LibrarySetup;
 
-import com.zsgs.chandru.librarymanagement.LibraryManagementMain;
 import com.zsgs.chandru.librarymanagement.admincontrols.AdminControlView;
 import com.zsgs.chandru.librarymanagement.colortext.Color;
 import com.zsgs.chandru.librarymanagement.exceptionmesage.ExceptionHandling;
 import com.zsgs.chandru.librarymanagement.model.Library;
 import com.zsgs.chandru.librarymanagement.validation.InputValidation;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LibrarySetupView {
@@ -71,7 +68,7 @@ public class LibrarySetupView {
     }
 
     public void librarySetupFailed() {
-       int choice = 0;
+       int choice ;
             do {
                 System.out.println(
                         "\n=================================" +
