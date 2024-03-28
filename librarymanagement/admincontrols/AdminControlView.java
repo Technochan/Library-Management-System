@@ -7,15 +7,13 @@ import com.zsgs.chandru.librarymanagement.login.LoginView;
 import com.zsgs.chandru.librarymanagement.managebook.ManageBookView;
 import com.zsgs.chandru.librarymanagement.manageissuebook.ManageIssueBookView;
 import com.zsgs.chandru.librarymanagement.manageuser.ManageUserView;
-import com.zsgs.chandru.librarymanagement.model.IdMaintain;
 
-import java.util.Scanner;
 
 public class AdminControlView {
-    private ManageBookView manageBookView;
-    private ManageUserView manageUserView;
-    private ManageIssueBookView manageIssueBookView;
-    private int librarianId;
+    private final ManageBookView manageBookView;
+    private final ManageUserView manageUserView;
+    private final ManageIssueBookView manageIssueBookView;
+    private final int librarianId;
     public ManageBookView getManageBookViewInstance() {
         return manageBookView;
     }
@@ -25,11 +23,6 @@ public class AdminControlView {
     }
 
     public AdminControlView(int currLibrarianId) {
-        LibraryDatabase.getInstance().deserializeAdminIdLibraryId();
-        LibraryDatabase.getInstance().deserializeBooksInLibrary();
-        LibraryDatabase.getInstance().deserializeIssuedBookDetails();
-        LibraryDatabase.getInstance().deserializeUserIdUserDetails();
-
         manageBookView = new ManageBookView(this);
         manageUserView = new ManageUserView(this);
         manageIssueBookView = new ManageIssueBookView(this);
@@ -46,13 +39,15 @@ public class AdminControlView {
         );
 
         System.out.println(
-                "\n\n---------------------------------" +
-                        "\n| 1 | Control Library Details   |" +
-                        "\n| 2 | Control Users Details     |" +
-                        "\n| 3 | Issue The Book            |" +
-                        "\n| 4 | Logout                    |" +
-                        "\n| 5 | Exit                      |" +
-                        "\n---------------------------------"
+                """
+
+                        ---------------------------------
+                        | 1 | Control Library Details   |
+                        | 2 | Control Users Details     |
+                        | 3 | Issue The Book            |
+                        | 4 | Logout                    |
+                        | 5 | Exit                      |
+                        ---------------------------------"""
         );
         int choice = ExceptionHandling.getIntInput();
         switch (choice) {
@@ -66,14 +61,10 @@ public class AdminControlView {
                 manageIssueBookView.initiateManage();
                 break;
             case 4:
-                new IdMaintain().serializeId();
-                LibraryDatabase.getInstance().serializeIdMaintainLists(); //
                 System.out.println("You're logged out successfully");
                 new LoginView().initiate();
                 break;
             case 5:
-                new IdMaintain().serializeId();
-                LibraryDatabase.getInstance().serializeIdMaintainLists();
                 System.out.println("\nThanks for using " + LibraryManagementMain.getInstance().getAppName() + "  - Version :" + LibraryManagementMain.getInstance().getAppVersion());
                 System.exit(0);
             default:

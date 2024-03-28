@@ -2,17 +2,18 @@ package com.zsgs.chandru.librarymanagement.managebook;
 
 import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
 import com.zsgs.chandru.librarymanagement.model.Book;
-
+import com.zsgs.chandru.librarymanagement.model.IdMaintain;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-public class ManageBookModel {
 
-    private static ManageBookView manageBookView;
+class ManageBookModel {
+
+    private final ManageBookView manageBookView;
 
     public ManageBookModel(ManageBookView manageBookView) {
         this.manageBookView = manageBookView;
+        LibraryDatabase.getInstance().deserializeBooksInLibrary();
     }
 
     public void proceedAddNewBook(String name, String author, String publisher, int publicationYear, String edition, String genre, int volume, int stock, int libraryId) {
@@ -89,6 +90,8 @@ public class ManageBookModel {
 
     public void updateDatabase() {
         LibraryDatabase.getInstance().serializeBooksInLibrary();
+        new IdMaintain().serializeId();
+        LibraryDatabase.getInstance().serializeIdMaintainLists();
     }
 
     public void stockUpdate() {

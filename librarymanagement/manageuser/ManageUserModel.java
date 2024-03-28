@@ -1,19 +1,19 @@
 package com.zsgs.chandru.librarymanagement.manageuser;
 
 import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
+import com.zsgs.chandru.librarymanagement.model.IdMaintain;
 import com.zsgs.chandru.librarymanagement.model.User;
 import com.zsgs.chandru.librarymanagement.validation.InputValidation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ManageUserModel {
-    private ManageUserView manageUserView;
+    private final ManageUserView manageUserView;
 
     public ManageUserModel(ManageUserView manageUserView) {
         this.manageUserView = manageUserView;
+        LibraryDatabase.getInstance().deserializeIssuedBookDetails();
     }
 
     // Validating the user details
@@ -83,6 +83,8 @@ public class ManageUserModel {
     //Once all the updates are in the database class initiate the serialization
     public void updateDatabase() {
         LibraryDatabase.getInstance().serializeUserIdUserDetails();
+        new IdMaintain().serializeId();
+        LibraryDatabase.getInstance().serializeIdMaintainLists();
     }
 
 }

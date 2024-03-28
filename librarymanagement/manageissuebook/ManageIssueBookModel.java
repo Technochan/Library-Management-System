@@ -1,24 +1,22 @@
 package com.zsgs.chandru.librarymanagement.manageissuebook;
 
 import com.zsgs.chandru.librarymanagement.librarydatabase.LibraryDatabase;
-import com.zsgs.chandru.librarymanagement.model.Book;
+import com.zsgs.chandru.librarymanagement.model.IdMaintain;
 import com.zsgs.chandru.librarymanagement.model.IssueBook;
-
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-import static javax.xml.bind.DatatypeConverter.parseDateTime;
+
 
 public class ManageIssueBookModel {
-    private ManageIssueBookView manageIssueBookView;
-
-    private Scanner scan;
+    private final ManageIssueBookView manageIssueBookView;
 
     public ManageIssueBookModel(ManageIssueBookView manageIssueBookView) {
+        LibraryDatabase.getInstance().deserializeUserIdUserDetails();
         this.manageIssueBookView = manageIssueBookView;
-        scan = new Scanner(System.in);
     }
 
     public void processIssueBook(int bookId, int userId) {
@@ -89,7 +87,7 @@ public class ManageIssueBookModel {
         }
     }
 
-    //////          *************************************
+    // It Revoke the book then update the stock in the library
     public void processRevoke(int userId, int bookId) {
         HashMap<Integer, ArrayList<IssueBook>> issuedBookDetails = LibraryDatabase.getInstance().getIssuedBookDetails();
         if (issuedBookDetails.containsKey(userId)) {
@@ -153,6 +151,8 @@ public class ManageIssueBookModel {
 
     public void updateIssueBookDatabase() {
         LibraryDatabase.getInstance().serializeIssuedBookDetails();
+        new IdMaintain().serializeId();
+        LibraryDatabase.getInstance().serializeIdMaintainLists();
     }
 
 

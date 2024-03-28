@@ -8,8 +8,8 @@ import com.zsgs.chandru.librarymanagement.validation.InputValidation;
 
 public class LoginModel {
 
-    private LoginView loginView;
-    private SetupCredential setupCredential;
+    private final LoginView loginView;
+    private final SetupCredential setupCredential;
 
     LoginModel(LoginView loginView) {
         this.loginView = loginView;
@@ -18,6 +18,7 @@ public class LoginModel {
 
     public void checkCredentials(int id, String password) {
         if (LibraryDatabase.getInstance().checkLibrarianCredentials(id, password)) {
+            LibraryDatabase.getInstance().deserializeAdminIdLibraryId();
             loginView.onSuccessComplete(id);
         } else {
             loginView.showAlert("Invalid User Id or Password");
@@ -62,19 +63,16 @@ public class LoginModel {
         LibraryDatabase.getInstance().insertLibrarianDetails(librarian.getLibrarianUserId(), librarian);
         loginView.showText("Account Setup Successfully Done \n\tYour Account ID : " + librarian.getLibrarianUserId());
 
-        LibraryDatabase.getInstance().serializeLibrarianDetails(); // library Details Seriliazation
-
         LibrarianCredentials librarianCredential = new LibrarianCredentials();
         librarianCredential.setLibrarianId(librarian.getLibrarianUserId());
         librarianCredential.setLibrarianIdPassword(password);
-
         LibraryDatabase.getInstance().insertLibrarianCredentials(librarian.getLibrarianUserId(), password);
 
+        LibraryDatabase.getInstance().serializeLibrarianDetails(); // library Details Seriliazation
         LibraryDatabase.getInstance().serializeLibrarianCredentials(); // Librarian Credentials Serialiazation
 
         loginView.proceedLogin();
     }
-
 
     public boolean isLibraryEmpty() {
         return LibraryDatabase.getInstance().isLibraryEmpty();
